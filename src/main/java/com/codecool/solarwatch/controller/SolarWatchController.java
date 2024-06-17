@@ -1,6 +1,5 @@
 package com.codecool.solarwatch.controller;
 
-import com.codecool.solarwatch.exception.InvalidDateException;
 import com.codecool.solarwatch.model.SolarWatch;
 import com.codecool.solarwatch.service.SolarWatchService;
 import org.springframework.http.ResponseEntity;
