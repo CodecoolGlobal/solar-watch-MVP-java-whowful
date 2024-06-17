@@ -1,9 +1,8 @@
 package com.codecool.solarwatch.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class City {
@@ -16,8 +15,8 @@ public class City {
     private double latitude;
     private String state;
     private String country;
-    @OneToOne
-    private SolarData solarData;
+    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<SolarData> solarData;
 
     public long getId() {
         return id;
@@ -67,11 +66,11 @@ public class City {
         this.country = country;
     }
 
-    public SolarData getSolarData() {
+    public List<SolarData> getSolarData() {
         return solarData;
     }
 
-    public void setSolarData(SolarData solarData) {
+    public void setSolarData(List<SolarData> solarData) {
         this.solarData = solarData;
     }
 }

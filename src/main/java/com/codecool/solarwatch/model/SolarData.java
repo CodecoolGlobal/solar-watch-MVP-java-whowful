@@ -1,9 +1,8 @@
 package com.codecool.solarwatch.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Entity
@@ -14,6 +13,17 @@ public class SolarData {
     private long id;
     private LocalTime sunrise;
     private LocalTime sunset;
+    private LocalDate date;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private City city;
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
 
     public long getId() {
         return id;
@@ -37,5 +47,13 @@ public class SolarData {
 
     public void setSunset(LocalTime sunset) {
         this.sunset = sunset;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate localDate) {
+        this.date = localDate;
     }
 }
