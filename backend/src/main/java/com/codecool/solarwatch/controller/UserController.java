@@ -43,7 +43,7 @@ public class UserController {
         UserEntity user = new UserEntity();
         user.setUsername(signUpRequest.username());
         user.setPassword(encoder.encode(signUpRequest.password()));
-        user.setRole(Role.ROLE_ADMIN);
+        user.setRole(Role.ROLE_USER);
         userRepository.save(user);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
