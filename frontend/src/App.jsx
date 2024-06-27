@@ -4,7 +4,6 @@ import MainPage from './Pages/MainPage'
 import LogInPage from './Pages/LogInPage'
 import RegistrationPage from './Pages/RegistrationPage'
 import Layout from './Components/Layout'
-import ProtectedRoute from './Components/ProtectedRoute'
 import SolarWatchPage from './Pages/SolarWatchPage'
 
 
