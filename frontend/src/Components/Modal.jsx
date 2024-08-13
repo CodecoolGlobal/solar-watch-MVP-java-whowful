@@ -7,6 +7,7 @@ function Modal({ solarData, closeModal }) {
       <div className='modalContainer'>
         <div className='title'>
           <h1>{solarData.city}</h1>
+          <h6>(Times are in UTC+2)</h6>
         </div>
         <div className='body'>
           <h2>Sunrise: {solarData.sunrise}</h2>

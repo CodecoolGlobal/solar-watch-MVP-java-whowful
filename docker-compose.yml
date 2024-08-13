@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  backend:
+      build: ./backend
+      ports:
+        - '8080:8080'
+      container_name: solarwatch_backend
+      depends_on:
+        - postgres
+      environment:
+        - SPRING_DATASOURCE_URL=${DB_URL}
+        - SPRING_DATASOURCE_USERNAME=${DB_USERNAME}
+        - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD}
+        - CODECOOL.APP.JWTSECRET=${SOLARWATCH_JWT_SECRET_KEY}
+        - CODECOOL.APP.JWTEXPIRATIONMS=${SOLARWATCH_EXPIRATION}
+
+  postgres:
+    image: 'postgres:latest'
+    container_name: solarwatch_database
+    restart: always
+    environment:
+      - POSTGRES_DB=solarwatch
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    ports:
+      - '15432:5432'
+
+  frontend:
+    build: ./frontend
+    container_name: solarwatch_frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+  
+volumes:
+  postgres_data:

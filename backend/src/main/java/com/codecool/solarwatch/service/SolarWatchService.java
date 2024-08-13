@@ -101,7 +101,7 @@ public class SolarWatchService {
     }
 
     private SolarData createSolarData(double latitude, double longitude, LocalDate date) {
-        String solarWatchUrl = String.format("https://api.sunrise-sunset.org/json?lat=%s&lng=%s&date=%s", latitude, longitude, date);
+        String solarWatchUrl = String.format("https://api.sunrise-sunset.org/json?lat=%s&lng=%s&date=%s&tzid=Europe/Berlin", latitude, longitude, date);
         SolarWatchReport solarWatchResponse = webClient
                 .get()
                 .uri(solarWatchUrl)

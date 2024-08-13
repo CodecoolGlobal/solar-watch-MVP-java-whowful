@@ -3,13 +3,13 @@ import React from 'react';
 import MainPage from './Pages/MainPage'
 import LogInPage from './Pages/LogInPage'
 import RegistrationPage from './Pages/RegistrationPage'
-import Layout from './Components/Layout'
+import Layout from './Components/Layout'  
 import SolarWatchPage from './Pages/SolarWatchPage'
 
 
 function App() {
   
-  return (
+  return (  
       <Layout>
         <Routes>
           <Route path="/" element={<MainPage />} />

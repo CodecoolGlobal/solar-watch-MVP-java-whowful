@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './RegistrationPage.css';
 import { useNavigate } from 'react-router-dom';
 
 const logInUser = async (body) => {

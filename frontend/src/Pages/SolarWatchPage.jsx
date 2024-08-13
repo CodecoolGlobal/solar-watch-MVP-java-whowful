@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import './SolarWatchPage.css'
-import '../Components/Layout.css'
 import Modal from '../Components/Modal'
 
 

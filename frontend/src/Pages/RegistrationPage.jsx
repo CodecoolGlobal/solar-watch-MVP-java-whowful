@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import'./RegistrationPage.css';
+
 
 const registerUser = async (body) => {
   try {
