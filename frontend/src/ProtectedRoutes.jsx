@@ -1,8 +1,8 @@
 import React from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
 function ProtectedRoutes() {
-  const user = null
-  return user ? <Outlet /> : <Navigate to="/login" />
+  const jwt = localStorage.getItem('token')
+  return jwt ? <Outlet /> : <Navigate to="/login" />
 }
 
 export default ProtectedRoutes

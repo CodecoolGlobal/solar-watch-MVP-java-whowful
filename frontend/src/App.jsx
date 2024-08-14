@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import React from 'react';
+import React, { useState } from 'react';
 import MainPage from './Pages/MainPage'
 import LogInPage from './Pages/LogInPage'
 import RegistrationPage from './Pages/RegistrationPage'
@@ -9,12 +9,12 @@ import ProtectedRoutes from './ProtectedRoutes';
 
 
 function App() {
-
+  const [jwt, setJwt] = useState()
   return (
-    <Layout>
+    <Layout jwt={jwt} jwtSetter={setJwt}>
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/login" element={<LogInPage />} />
+        <Route path="/login" element={<LogInPage jwtSetter={setJwt} />} />
         <Route path="/register" element={<RegistrationPage />} />
         <Route element={<ProtectedRoutes />} >
           <Route path='/solarwatch' element={<SolarWatchPage />} />

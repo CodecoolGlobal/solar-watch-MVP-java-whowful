@@ -17,7 +17,7 @@ const logInUser = async (body) => {
   }
 }
 
-const LogInPage = () => {
+const LogInPage = ({ jwtSetter }) => {
   const [logInData, setLogInData] = useState({
     username: '',
     password: ''
@@ -37,6 +37,7 @@ const LogInPage = () => {
     e.preventDefault();
     const userData = await logInUser(logInData)
     localStorage.setItem("token", userData.jwt)
+    jwtSetter(userData.jwt)
     navigate('/solarwatch')
     console.log('User logged in:', logInData);
   };
