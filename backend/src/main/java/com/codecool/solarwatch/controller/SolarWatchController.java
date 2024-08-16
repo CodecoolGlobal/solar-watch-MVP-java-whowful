@@ -30,11 +30,7 @@ public class SolarWatchController {
 
     @GetMapping("/solarwatch/all")
     public List<SolarWatch> getAllSolarWatch(){
-        List<SolarWatch> solarWatchList = solarWatchService.getAllSolarWatchData();
-        if (!solarWatchList.isEmpty()){
-            return solarWatchList;
-        }
-        return null;
+        return solarWatchService.getAllSolarWatchData();
     }
 
     @PostMapping("/admin/solarwatch")
