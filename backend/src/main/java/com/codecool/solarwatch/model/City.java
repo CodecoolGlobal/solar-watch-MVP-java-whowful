@@ -15,7 +15,7 @@ public class City {
     private double latitude;
     private String state;
     private String country;
-    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL)
     private List<SolarData> solarData;
 
     public long getId() {

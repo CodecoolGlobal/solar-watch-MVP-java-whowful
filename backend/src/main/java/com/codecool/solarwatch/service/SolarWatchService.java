@@ -48,6 +48,20 @@ public class SolarWatchService {
         return true;
     }
 
+    public List<SolarWatch> getAllSolarWatchData(){
+        List<SolarData> solarDataList = solarDataRepository.findAll();
+        if (solarDataList.isEmpty()){
+            return null;
+        }
+        return solarDataList.stream()
+                .map(solarData -> new SolarWatch(
+                        solarData.getSunrise(),
+                        solarData.getSunset(),
+                        solarData.getCity().getName(),
+                        solarData.getDate()))
+                .toList();
+    }
+
     public SolarWatch getSolarWatchForCity(String city, LocalDate date) {
         if (!cityRepository.existsByName(city)) {
             saveCityToDb(city, date);
@@ -60,6 +74,7 @@ public class SolarWatchService {
         logger.info("SolarData selected {}", solarDataForSelectedCity);
         if (solarDataForSelectedCity == null) {
             SolarData newSolarData = createSolarData(selectedCity.getLatitude(), selectedCity.getLongitude(), date);
+            newSolarData.setCity(selectedCity);
             solarDataRepository.save(newSolarData);
 
             List<SolarData> solarDataListForCity = selectedCity.getSolarData();
@@ -67,9 +82,13 @@ public class SolarWatchService {
             selectedCity.setSolarData(solarDataListForCity);
             cityRepository.save(selectedCity);
 
-            return new SolarWatch(newSolarData.getSunrise(), newSolarData.getSunset(), city);
+            return new SolarWatch(newSolarData.getSunrise(), newSolarData.getSunset(), city, newSolarData.getDate());
         }
-        return new SolarWatch(solarDataForSelectedCity.getSunrise(), solarDataForSelectedCity.getSunset(), city);
+        return new SolarWatch(
+                solarDataForSelectedCity.getSunrise(),
+                solarDataForSelectedCity.getSunset(),
+                city,
+                solarDataForSelectedCity.getDate());
     }
 
 

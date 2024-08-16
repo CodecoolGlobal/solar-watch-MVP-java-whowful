@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Modal from '../Components/Modal'
+import HistoryTable from "../Components/HistoryTable";
 
 
 const getSolarDataForCity = async (city, date) => {
@@ -30,15 +31,15 @@ const SolarWatchPage = () => {
   const [cityName, setCityName] = useState('')
   const [solarData, setSolarData] = useState(null)
   const [openModal, setOpenModal] = useState(false)
-  const [allSolarData, setAllSolarData] = useState(null)
+  const [solarDataList, setSolarDataList] = useState(null)
   const [date, setDate] = useState('')
 
   const currentDate = new Date().toJSON().slice(0, 10)
 
   useEffect(() => {
     const solarDataFunc = async () => {
-      const allSolarDataResponse = await getAllSolarData();
-      setAllSolarData(allSolarDataResponse);
+      const solarDataListResponse = await getAllSolarData();
+      setSolarDataList(solarDataListResponse)
     };
     setDate(currentDate)
     solarDataFunc();
@@ -56,8 +57,8 @@ const SolarWatchPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const oneSolarDataResponse = await getSolarDataForCity(cityName, date)
-    setSolarData(oneSolarDataResponse)
+    const solarDataResponse = await getSolarDataForCity(cityName, date)
+    setSolarData(solarDataResponse)
     setOpenModal(true)
   }
 
@@ -91,32 +92,7 @@ const SolarWatchPage = () => {
           </div>
           <div>
             <h2 className="mx-10 p-2 border-b-2 border-gray-800 text-2xl">History</h2>
-            <div className="relative overflow-x-auto mx-10 p-2">
-              <table className="w-full text-left text-gray-800">
-                <thead className="text-gray-700 uppercase">
-                  <tr>
-                    <th className="border-b border-gray-800 py-5 text-lg">City</th>
-                    <th className="border-b border-gray-800 py-5 text-lg">Date</th>
-                    <th className="border-b border-gray-800 py-5 text-lg">Sunrise</th>
-                    <th className="border-b border-gray-800 py-5 text-lg">Sunset</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {allSolarData && allSolarData.length > 0 ? (allSolarData.map((data, index) => (
-                    <tr key={index} className="bg-white border-b-2 text-sm">
-                      <td className="py-2">{data.city}</td>
-                      <td>{data.date}</td>
-                      <td>{data.sunrise}</td>
-                      <td>{data.sunset}</td>
-                    </tr>
-                  ))) : (
-                    <tr>
-                      <td colSpan="4" className="text-center py-4">No data available.</td>
-                    </tr>
-                  )}
-                </tbody>
-              </table>
-            </div>
+            <HistoryTable solarDataList={solarDataList} />
           </div>
         </div >
       ) : (

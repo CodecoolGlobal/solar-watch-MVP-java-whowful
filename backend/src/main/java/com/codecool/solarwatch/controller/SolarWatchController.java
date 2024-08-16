@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -25,6 +26,15 @@ public class SolarWatchController {
         }
         SolarWatch report = solarWatchService.getSolarWatchForCity(city, date);
         return ResponseEntity.ok(report);
+    }
+
+    @GetMapping("/solarwatch/all")
+    public List<SolarWatch> getAllSolarWatch(){
+        List<SolarWatch> solarWatchList = solarWatchService.getAllSolarWatchData();
+        if (!solarWatchList.isEmpty()){
+            return solarWatchList;
+        }
+        return null;
     }
 
     @PostMapping("/admin/solarwatch")
