@@ -9,9 +9,11 @@ const logInUser = async (body) => {
         "Content-type": "application/json"
       },
       body: JSON.stringify(body)
-
     })
-    return await res.json()
+    if (res.ok) {
+      return await res.json()
+    }
+    alert("Incorrect credentials!")
   } catch (error) {
     console.error("Failed to log in: ", error)
   }
@@ -35,11 +37,13 @@ const LogInPage = ({ jwtSetter }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const userData = await logInUser(logInData)
-    localStorage.setItem("token", userData.jwt)
-    jwtSetter(userData.jwt)
-    navigate('/solarwatch')
-    console.log('User logged in:', logInData);
+    const userDataResponse = await logInUser(logInData)
+    if (userDataResponse !== undefined) {
+      localStorage.setItem("token", userDataResponse.jwt)
+      jwtSetter(userDataResponse.jwt)
+      console.log('User logged in:', logInData);
+      navigate('/solarwatch')
+    }
   };
 
   return (
