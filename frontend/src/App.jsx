@@ -5,7 +5,7 @@ import LogInPage from './Pages/LogInPage'
 import RegistrationPage from './Pages/RegistrationPage'
 import Layout from './Components/Layout'
 import SolarWatchPage from './Pages/SolarWatchPage'
-import ProtectedRoutes from './ProtectedRoutes';
+import ProtectedRoutes from './Components/ProtectedRoutes';
 
 
 function App() {

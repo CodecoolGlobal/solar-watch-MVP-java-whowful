@@ -28,36 +28,40 @@ const getAllSolarData = async () => {
 }
 
 const SolarWatchPage = () => {
-  const [cityName, setCityName] = useState('')
+  const [solarRequestData, setSolarRequestData] = useState({
+    city: '',
+    date: ''
+  })
   const [solarData, setSolarData] = useState(null)
   const [openModal, setOpenModal] = useState(false)
   const [solarDataList, setSolarDataList] = useState(null)
-  const [date, setDate] = useState('')
 
   const currentDate = new Date().toJSON().slice(0, 10)
 
   useEffect(() => {
-    const solarDataFunc = async () => {
+    const saveSolarData = async () => {
       const solarDataListResponse = await getAllSolarData();
       setSolarDataList(solarDataListResponse)
     };
-    setDate(currentDate)
-    solarDataFunc();
+    setSolarRequestData({
+      ...solarRequestData,
+      date: currentDate
+    })
+    saveSolarData();
   }, [solarData]);
 
 
-  const handleCityChange = (e) => {
-    setCityName(e.target.value)
-  }
-
-  const handleDateChange = (e) => {
-    console.log(e.target.value)
-    setDate(e.target.value)
-  }
+  const handleSolarDataChange = (e) => {
+    const { name, value } = e.target;
+    setSolarRequestData({
+      ...solarRequestData,
+      [name]: value
+    });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const solarDataResponse = await getSolarDataForCity(cityName, date)
+    const solarDataResponse = await getSolarDataForCity(solarRequestData.city, solarRequestData.date)
     setSolarData(solarDataResponse)
     setOpenModal(true)
   }
@@ -69,9 +73,9 @@ const SolarWatchPage = () => {
           <label htmlFor="solarWatch" className="pr-2"> Please enter the city:</label>
           <input
             type="text"
-            name="solarWatch"
-            value={cityName}
-            onChange={handleCityChange}
+            name="city"
+            value={solarRequestData.city}
+            onChange={handleSolarDataChange}
             className='border-black border rounded-md px-1'
           />
         </div>
@@ -80,9 +84,9 @@ const SolarWatchPage = () => {
           <input
             min={currentDate}
             type="date"
-            name="solarWatchDate"
-            value={date}
-            onChange={handleDateChange}
+            name="date"
+            value={solarRequestData.date}
+            onChange={handleSolarDataChange}
             className='border-black border rounded-md px-1 w-auto'
           />
         </div>

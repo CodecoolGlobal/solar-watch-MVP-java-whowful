@@ -11,7 +11,6 @@ const registerUser = async (body) => {
       },
       body: JSON.stringify(body)
     })
-    console.log(res.json())
   } catch (error) {
     console.error("Failed to register user: ", error)
   }
@@ -27,7 +26,6 @@ const RegistrationPage = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(e.target.value)
     setRegistrationData({
       ...registrationData,
       [name]: value
@@ -39,7 +37,6 @@ const RegistrationPage = () => {
     registerUser(registrationData)
     alert("Registration successful!")
     navigate('/login')
-    console.log('Form submitted:', registrationData);
   };
 
   return (

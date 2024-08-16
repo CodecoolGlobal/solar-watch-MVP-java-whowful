@@ -28,20 +28,18 @@ const LogInPage = ({ jwtSetter }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(e.target.value)
     setLogInData({
       ...logInData,
       [name]: value
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleLogIn = async (e) => {
     e.preventDefault();
-    const userDataResponse = await logInUser(logInData)
-    if (userDataResponse !== undefined) {
-      localStorage.setItem("token", userDataResponse.jwt)
-      jwtSetter(userDataResponse.jwt)
-      console.log('User logged in:', logInData);
+    const logInResponse = await logInUser(logInData)
+    if (logInResponse !== undefined) {
+      localStorage.setItem("token", logInResponse.jwt)
+      jwtSetter(logInResponse.jwt)
       navigate('/solarwatch')
     }
   };
@@ -49,7 +47,7 @@ const LogInPage = ({ jwtSetter }) => {
   return (
     <div className='text-center my-32'>
       <h2 className='mb-10 text-2xl'>Please enter your credentials to log in!</h2>
-      <form onSubmit={handleSubmit} className='py-12 border-4 border-gray-800 rounded-3xl w-6/12 bg-gray-300 mx-auto'>
+      <form onSubmit={handleLogIn} className='py-12 border-4 border-gray-800 rounded-3xl w-6/12 bg-gray-300 mx-auto'>
         <div className='p-6'>
           <label htmlFor="username" className='pr-2'>Username:</label>
           <input
