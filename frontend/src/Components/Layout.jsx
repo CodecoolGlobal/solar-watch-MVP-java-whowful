@@ -19,36 +19,50 @@ const Layout = ({ children, jwt, jwtSetter }) => {
   }
 
   return (
-    <div>
-      <header>
-        <nav>
-          <div>
-            <a href="/">Home</a>
-          </div>
-          {!jwt ? <>
-            <div>
+    <>
+      <header className="bg-gray-800 flex items-center justify-between p-2">
+        <div className="inline-block">
+          <a className="p-2 m-2 rounded-xl text-white hover:bg-gray-600" href="/">
+            Home
+          </a>
+        </div>
+        {!jwt ? (
+          <nav>
+            <div className="inline-block">
               <Link to="/login">
-                <button>Sign In</button>
+                <button className="p-2 m-2 rounded-xl text-white hover:bg-gray-600 border border-r-white">
+                  Sign In
+                </button>
               </Link>
             </div>
-            <div>
+            <div className="inline-block">
               <Link to="/register">
-                <button>Register</button>
+                <button className="p-2 m-2 rounded-xl text-white hover:bg-gray-600 border border-r-white">
+                  Register
+                </button>
               </Link>
             </div>
-          </> : <>
-            <div>
-              <Link to="/">
-                <button onClick={handleLogout}>Logout</button>
-              </Link>
-            </div>
-          </>}
-        </nav>
+          </nav>
+        ) : (
+          <nav className="inline-block">
+            <Link to='/solarwatch'>
+              <button className="p-2 m-2 rounded-xl text-white hover:bg-gray-600 border border-r-white">
+                SolarWatch
+              </button>
+            </Link>
+            <Link to="/">
+              <button className="p-2 m-2 rounded-xl text-white hover:bg-gray-600 border border-r-white" onClick={handleLogout}>
+                Logout
+              </button>
+            </Link>
+          </nav>
+        )}
       </header>
-      <div>
+      <main >
         {children}
-      </div>
-    </div>
+      </main >
+    </>
+
   )
 }
 
