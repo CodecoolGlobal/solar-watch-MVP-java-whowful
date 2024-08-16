@@ -1,11 +1,15 @@
 .modalBackground {
   width: 100vw;
   height: 100vh;
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(2px);
+  background-color: rgba(0, 0, 0, 0.35);
   position: fixed;
+  top: 0;
+  left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 5;
 }
 
 .modalContainer {
@@ -22,7 +26,7 @@
 .modalContainer .title {
   display: inline-block;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 3rem;
 }
 
 .modalContainer .body {
@@ -45,11 +49,14 @@
   width: 150px;
   height: 45px;
   margin: 10px;
-  border: solid black 1px;
-  background-color: orange;
+  background-color: rgb(31, 41, 55);
   text-align: center;
   color: white;
   border-radius: 8px;
   font-size: 20px;
   cursor: pointer;
+}
+
+.modalContainer .footer button:hover {
+  background-color: rgb(75, 85, 99);
 }

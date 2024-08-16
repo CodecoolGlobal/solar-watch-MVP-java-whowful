@@ -64,37 +64,38 @@ const SolarWatchPage = () => {
 
   return (
     <>
-      {!openModal ? (
+      <div>
+        <div className="ml-10 mt-20 p-2">
+          <label htmlFor="solarWatch" className="pr-2"> Please enter the city:</label>
+          <input
+            type="text"
+            name="solarWatch"
+            value={cityName}
+            onChange={handleCityChange}
+            className='border-black border rounded-md px-1'
+          />
+        </div>
+        <div className="ml-10 p-2">
+          <label htmlFor="solarWatchDate" className="pr-2"> Please enter the date:</label>
+          <input
+            min={currentDate}
+            type="date"
+            name="solarWatchDate"
+            value={date}
+            onChange={handleDateChange}
+            className='border-black border rounded-md px-1 w-auto'
+          />
+        </div>
+        <div className="ml-10 mb-20 p-2">
+          <button className='bg-gray-800 p-2 mt-7 rounded-xl text-white hover:bg-gray-500' type="submit" onClick={handleSubmit}>Search</button>
+        </div>
         <div>
-          <div className="ml-10 mt-20 p-2">
-            <label htmlFor="solarWatch" className="pr-2"> Please enter the city:</label>
-            <input
-              type="text"
-              name="solarWatch"
-              value={cityName}
-              onChange={handleCityChange}
-              className='border-black border rounded-md px-1'
-            />
-          </div>
-          <div className="ml-10 p-2">
-            <label htmlFor="solarWatchDate" className="pr-2"> Please enter the date:</label>
-            <input
-              min={currentDate}
-              type="date"
-              name="solarWatchDate"
-              value={date}
-              onChange={handleDateChange}
-              className='border-black border rounded-md px-1 w-auto'
-            />
-          </div>
-          <div className="ml-10 mb-20 p-2">
-            <button className='bg-gray-800 p-2 mt-7 rounded-xl text-white hover:bg-gray-500' type="submit" onClick={handleSubmit}>Search</button>
-          </div>
-          <div>
-            <h2 className="mx-10 p-2 border-b-2 border-gray-800 text-2xl">History</h2>
-            <HistoryTable solarDataList={solarDataList} />
-          </div>
-        </div >
+          <h2 className="mx-10 p-2 border-b-2 border-gray-800 text-2xl">History</h2>
+          <HistoryTable solarDataList={solarDataList} />
+        </div>
+      </div >
+      {!openModal ? (
+        <></>
       ) : (
         <Modal solarData={solarData} closeModal={setOpenModal} />
       )}
