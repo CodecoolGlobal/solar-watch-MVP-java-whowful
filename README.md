@@ -67,7 +67,7 @@ Java JDK 17 or newer: You can download it here. [https://www.oracle.com/java/tec
    - Edit the configuration of the application:
   <img src='frontend/public/Screenshot 2024-08-21 at 13.28.43.png'>
    - Select the Modify options and then the environmental variables:
-  <img src='frontend/public/Screenshot 2024-08-21 at 13.31.15.png'>
+  <img src='frontend/public/Screenshot 2024-08-21 at 14.22.00.png'>
    - Now an input field of the environmental variables is visible where you can enter your variables.
    - Don't forget to add your API key as well.
 
@@ -82,10 +82,12 @@ ____
 
    - Open the backend folder in your IDE (IntelliJ IDEA recommended).
    - Ensure it's opened as a Maven project.
-   - Run the main method of the SolarWatchApplication class.to open it as a Maven project.
+   - Run the main method of the SolarWatchApplication class.
+  
 2. Start the frontend:
+
    - Navigate to the frontend folder.
-   - Run the command
+   - Run the command:
    ```sh
    npm run dev
    ```
