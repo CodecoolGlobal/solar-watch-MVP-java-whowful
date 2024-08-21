@@ -54,11 +54,11 @@ Java JDK 17 or newer: You can download it here. [https://www.oracle.com/java/tec
 
 1. Get your FREE API key for Gocode API: [https://openweathermap.org/api/geocoding-api](https://openweathermap.org/api/geocoding-api)
    
-2. Clone the repo
+2. Clone the repo:
    ```sh
    git clone https://github.com/CodecoolGlobal/solar-watch-MVP-java-whowful.git
    ```
-3. Install NPM packages in the frontend folder
+3. Install NPM packages in the frontend folder:
    ```sh
    cd frontend
    npm install
