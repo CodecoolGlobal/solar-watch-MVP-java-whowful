@@ -12,7 +12,12 @@ This project is a streamlined and user-friendly website that allows registered u
 
 ---
 
-In this application <strong>[Sunrise Sunset API](https://sunrise-sunset.org/api)</strong> and <strong>[Geocode API](https://openweathermap.org/api/geocoding-api)</strong> are used to generate the solar data. <strong>[Geocode API](https://openweathermap.org/api/geocoding-api)</strong> requires an API key, so make sure to register on their website if you would like to use this application.
+This application utilizes the following APIs and technologies:
+
+- <strong>[Sunrise Sunset API](https://sunrise-sunset.org/api)</strong>: Provides solar data.
+- <strong>[Geocode API](https://openweathermap.org/api/geocoding-api)</strong>: Used for location-based services. Requires an API key, which you can obtain by registering on their website.
+
+### Technologies
 
 * [![Java][java.com]][Java-url]
 * [![Spring Boot][Spring.com]][Spring-boot-url]
@@ -40,9 +45,15 @@ In this application <strong>[Sunrise Sunset API](https://sunrise-sunset.org/api)
 
 ### Installation
 
-For the project Java JDK 21 or newer version is required. You can download it from here: [https://www.oracle.com/java/technologies/javase/jdk21-archive-downloads.html](https://www.oracle.com/java/technologies/javase/jdk21-archive-downloads.html)
+___
+
+#### Prerequisites:
+Java JDK 17 or newer: You can download it here. [https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
+
+#### Steps
 
 1. Get your FREE API key for Gocode API: [https://openweathermap.org/api/geocoding-api](https://openweathermap.org/api/geocoding-api)
+   
 2. Clone the repo
    ```sh
    git clone https://github.com/CodecoolGlobal/solar-watch-MVP-java-whowful.git
@@ -60,18 +71,27 @@ For the project Java JDK 21 or newer version is required. You can download it fr
    - Now an input field of the environmental variables is visible where you can enter your variables.
    - Don't forget to add your API key as well.
 
-<strong>Please note that the name of the environmental variables have to be the same as in the application.properties file!</Strong>
+<ins><strong>Please note that the name of the environmental variables have to be the same as in the application.properties file!</Strong></ins>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Usage
+____
 
-1. To start the server, open the backend folder of the project in your IDE (IntelliJ IDEA recommended). Make sure to open it as a Maven project.
-2. Run the main method of the SolarWatchApplication class.
-3. Run the frontend from the terminal:
+1. Start the server:
+
+   - Open the backend folder in your IDE (IntelliJ IDEA recommended).
+   - Ensure it's opened as a Maven project.
+   - Run the main method of the SolarWatchApplication class.to open it as a Maven project.
+2. Start the frontend:
    - Navigate to the frontend folder.
-   - Start it with 'npm run dev' command
-4. Open localhost in your browser: [http://localhost:5173/](http://localhost:5173/)
+   - Run the command
+   ```sh
+   npm run dev
+   ```
+3. Access the website:
+   - [http://localhost:5173/](http://localhost:5173/)
+   - After registration and login you are able to use the solar data request feature.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
