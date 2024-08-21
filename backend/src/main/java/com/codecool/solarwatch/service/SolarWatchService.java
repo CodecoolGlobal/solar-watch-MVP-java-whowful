@@ -9,6 +9,7 @@ import com.codecool.solarwatch.repository.SolarDataRepository;
 import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -19,9 +20,10 @@ import java.util.List;
 
 @Service
 public class SolarWatchService {
-    private static final String API_KEY = "55d7b2bae7a7cd01cf22089a1bd93ca6";
-    private final WebClient webClient;
+    @Value("${API_KEY}")
+    private String API_KEY;
     private static final Logger logger = LoggerFactory.getLogger(SolarWatchService.class);
+    private final WebClient webClient;
     private final CityRepository cityRepository;
     private final SolarDataRepository solarDataRepository;
 
